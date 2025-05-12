@@ -1,0 +1,101 @@
+\documentclass[12pt]{Article}
+
+% Package to handle graphics inclusion (optional)
+\usepackage{graphicx}
+% Package for better math formatting (optional)
+\usepackage{amsmath}
+% For references (optional)
+\usepackage{cite}
+% Package to customize title position
+\usepackage{titling}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    frame=single,
+    captionpos=b
+}
+
+
+\usepackage{silence}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage[margin=0.8in]{geometry}  % Adjust the margin as needed
+
+\setlength{\parindent}{15pt} 
+% Adjust the title position
+\setlength{\droptitle}{-6em}% Adjust the value as needed
+% Title and Author information
+\title{Project Proposal - Messaging App}
+\author{
+    Hugo Garrido-Lestache
+}
+\date{\today \\ CSC 5201 301}
+
+\begin{document}
+
+\maketitle
+\section*{Introduction}
+For my Final Project, I want to create a messaging app that allows users to send messages to each other.
+This app will be a wep app with the abilities to send direct mesages, group messages and create group chats.
+It will also handle users login and registration.
+I think this service could be a fun project to practice my skills, 
+which I could then be use to message my friends and family.
+This service should be similar to messaging app such as WhatsApp or Microsoft Teams.
+
+\section{Data}
+The data that we will be using will consists of the messages, the users and the group chats.
+In deployment we will expect the data to slowly grow as more users join and use the app.
+However for testing, manual (or automatic) creation of users, messages and group chats will be needed.
+
+\section{Use cases}
+The application will need to be developed to support the following use cases:
+
+\begin{itemize}
+    \item User login and registration - Users will need to be able to login and register to use the app.
+    \item Send direct messages to other users - Users will need to be able to send direct messages to other users.
+    \item Create group chats - Users will need to be able to create group chats.
+    \item Send messages to group chats - Users will need to be able to send messages to group chats.
+    \item Add users to group chats - Users will need to be able to add users to group chats.
+    \item Remove users from group chats - Users will need to be able to remove users from group chats.
+    \item Logout - Users will need to be able to logout of the app.
+\end{itemize}
+
+\section{Business context \& Services}
+Our business can be separated into 3 services:
+
+\begin{itemize}
+    \item User service - This service will be responsible for handling the user login and registration. It will be responsible for managing the data on user in the database and should ensure that the users are authenticated.
+    \item Message service - This service will be responsible for handling the messages. It will be responsible for managing the data on messages in the database and should ensure that the messages are stored and retrieved correctly.
+    \item Group chat service - This service will be responsible for handling the group chats. It will be responsible for managing the data on group chats in the database and should ensure that the group chats are stored and retrieved correctly.
+\end{itemize}
+
+These services should allow the app to be scalable depending on the number of users, messages and group chats.
+
+\section{Consistency throughout regions}
+In our app, we will need to ensure that we strict consistency in our app.
+This is because we want to ensure that all users are always capable of seeing the same data, allowing them to efficiently communicate with each other.
+If our app is deployed in multiple regions, we will need to ensure that we have a way to ensure that the data is consistent throughout all regions.
+To do this, we will need to use a consistent data storage solution, such as an ACID database which is replicated across all regions.
+Replication of the database may cause some latency issues in our services, but it will ensure that the data is consistent throughout all regions.
+This would also cause an increased storage/data requirement, but again it will ensure that the data is consistent throughout all regions.
+We will need to think of conflict when it comes to data consistency, when both regions have updated the data and how to resolve them.
+
+\section{Submission notes}
+I was not able to get to 3 pages, however since I feel like since I have answered all the questions, I will submit what I have, rather that adding filler to reach the page limit.
+Please let me know if you prefer me to add more content or if you think there a sections that are missing.
+
+
+\end{document}

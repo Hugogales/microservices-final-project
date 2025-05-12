@@ -1,0 +1,101 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: messaging-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: messaging_app
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+  user-service:
+    build:
+      context: ./user_service
+    container_name: user-service
+    restart: always
+    ports:
+      - "5001:5001"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: messaging_app
+      SECRET_KEY: super_secret_key_change_this_in_production
+
+  message-service:
+    build:
+      context: ./message_service
+    container_name: message-service
+    restart: always
+    ports:
+      - "5002:5002"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: messaging_app
+      USER_SERVICE_URL: http://user-service:5001
+      GROUP_CHAT_SERVICE_URL: http://group-chat-service:5004
+
+  group-chat-service:
+    build:
+      context: ./group_chat_service
+    container_name: group-chat-service
+    restart: always
+    ports:
+      - "5004:5004"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+      message-service:
+        condition: service_started
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: messaging_app
+      USER_SERVICE_URL: http://user-service:5001
+      MESSAGE_SERVICE_URL: http://message-service:5002
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - user-service
+      - message-service
+      - group-chat-service
+    volumes:
+      # Mount templates and static files for faster development
+      - ./frontend/templates:/app/templates
+      - ./frontend/static:/app/static
+    environment:
+      USER_SERVICE_URL: http://user-service:5001
+      MESSAGE_SERVICE_URL: http://message-service:5002
+      GROUP_CHAT_SERVICE_URL: http://group-chat-service:5004
+      FLASK_DEBUG: 1  # Enable debug mode for auto-reloading
+
+volumes:
+  mysql-data: 

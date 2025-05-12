@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo's Messaging App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body data-user-id="{{ user_id }}" data-username="{{ username }}">
+    <div class="chat-app">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <div class="user-avatar">{{ username[:2].upper() }}</div>
+                    <div class="user-name">{{ username }}</div>
+                </div>
+                <div class="header-actions">
+                    <button id="create-group-btn" title="Create New Group">
+                        <i class="fas fa-users-gear"></i>
+                    </button>
+                    <a href="/logout" class="logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="sidebar-tabs">
+                <div class="tab active" data-tab="conversations">
+                    <i class="fas fa-comments"></i> Conversations
+                </div>
+                <div class="tab" data-tab="groups">
+                    <i class="fas fa-users"></i> Groups
+                </div>
+            </div>
+            
+            <div class="sidebar-content">
+                <div id="conversations-tab" class="tab-content">
+                    <div id="conversation-list">
+                        <!-- Conversations will be loaded here -->
+                        <div class="empty-state">
+                            <div class="empty-state-icon"><i class="fas fa-spinner fa-spin"></i></div>
+                            <div class="empty-state-text">Loading conversations...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="groups-tab" class="tab-content" style="display: none;">
+                    <div id="group-list">
+                        <!-- Groups will be loaded here -->
+                        <div class="empty-state">
+                            <div class="empty-state-icon"><i class="fas fa-spinner fa-spin"></i></div>
+                            <div class="empty-state-text">Loading groups...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main chat area -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <h2 id="chat-title">Select a conversation</h2>
+                <div id="chat-actions" style="display: none;"></div>
+            </div>
+            
+            <div id="messages-container" class="messages-container">
+                <div class="empty-state">
+                    <div class="empty-state-icon"><i class="fas fa-comment-dots"></i></div>
+                    <div class="empty-state-text">Select a conversation to start messaging</div>
+                </div>
+            </div>
+            
+            <div id="message-input-container" class="message-input-container" style="display: none;">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-message-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Group Modal -->
+    <div id="create-group-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Group</h3>
+                <button id="close-group-modal" class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="group-name">Group Name</label>
+                    <input type="text" id="group-name" placeholder="Enter group name">
+                </div>
+                <div class="form-group">
+                    <label>Add Members</label>
+                    <div id="user-list" class="user-list">
+                        <!-- Users will be loaded here -->
+                        <div class="loading">Loading users...</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="create-group-submit" class="primary-button">Create Group</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Group Info Modal -->
+    <div id="group-info-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="group-info-title">Group Info</h3>
+                <button id="close-group-info-modal" class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="edit-group-name">Group Name</label>
+                    <div class="input-with-button">
+                        <input type="text" id="edit-group-name" placeholder="Enter group name">
+                        <button id="update-group-name-btn" class="secondary-button">
+                            <i class="fas fa-check"></i> Update
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Group Members</label>
+                    <div id="group-members-list" class="user-list">
+                        <!-- Group members will be loaded here -->
+                        <div class="loading">Loading members...</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Add Members</label>
+                    <div id="add-members-list" class="user-list">
+                        <!-- Available users will be loaded here -->
+                        <div class="loading">Loading users...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html> 

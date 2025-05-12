@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #3498db;
+            text-align: center;
+        }
+        .service-container {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .service-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .service-url {
+            font-family: monospace;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .success {
+            color: #2ecc71;
+        }
+        .error {
+            color: #e74c3c;
+        }
+        .test-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .test-button:hover {
+            background-color: #2980b9;
+        }
+        .result-box {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .navigation {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .navigation a {
+            margin: 0 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Microservices Connection Test</h1>
+        
+        <div class="service-container">
+            <div class="service-title">User Service</div>
+            <div class="service-url" id="user-service-url"></div>
+            <button class="test-button" id="test-user-service">Test Connection</button>
+            <div class="result-box" id="user-service-result">Status: Not tested</div>
+        </div>
+        
+        <div class="service-container">
+            <div class="service-title">Message Service</div>
+            <div class="service-url" id="message-service-url"></div>
+            <button class="test-button" id="test-message-service">Test Connection</button>
+            <div class="result-box" id="message-service-result">Status: Not tested</div>
+        </div>
+        
+        <div class="service-container">
+            <div class="service-title">Database Connection</div>
+            <button class="test-button" id="test-db-connection">Test Database</button>
+            <div class="result-box" id="db-connection-result">Status: Not tested</div>
+        </div>
+        
+        <div class="navigation">
+            <a href="/login">Go to Login</a> | 
+            <a href="/chat">Go to Chat</a> | 
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <script>
+        // Get service URLs when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/config')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('user-service-url').textContent = data.userServiceUrl;
+                    document.getElementById('message-service-url').textContent = data.messageServiceUrl;
+                })
+                .catch(error => {
+                    console.error('Error fetching config:', error);
+                });
+        });
+
+        // User Service Test
+        document.getElementById('test-user-service').addEventListener('click', function() {
+            const resultElement = document.getElementById('user-service-result');
+            resultElement.textContent = 'Status: Testing...';
+            resultElement.className = 'result-box';
+            
+            fetch('/api/test/user-service')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        resultElement.textContent = `Status: Connected (${data.message})`;
+                        resultElement.classList.add('success');
+                    } else {
+                        resultElement.textContent = `Status: Error (${data.message})`;
+                        resultElement.classList.add('error');
+                    }
+                })
+                .catch(error => {
+                    resultElement.textContent = `Status: Error (${error.message})`;
+                    resultElement.classList.add('error');
+                });
+        });
+
+        // Message Service Test
+        document.getElementById('test-message-service').addEventListener('click', function() {
+            const resultElement = document.getElementById('message-service-result');
+            resultElement.textContent = 'Status: Testing...';
+            resultElement.className = 'result-box';
+            
+            fetch('/api/test/message-service')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        resultElement.textContent = `Status: Connected (${data.message})`;
+                        resultElement.classList.add('success');
+                    } else {
+                        resultElement.textContent = `Status: Error (${data.message})`;
+                        resultElement.classList.add('error');
+                    }
+                })
+                .catch(error => {
+                    resultElement.textContent = `Status: Error (${error.message})`;
+                    resultElement.classList.add('error');
+                });
+        });
+
+        // Database Test
+        document.getElementById('test-db-connection').addEventListener('click', function() {
+            const resultElement = document.getElementById('db-connection-result');
+            resultElement.textContent = 'Status: Testing...';
+            resultElement.className = 'result-box';
+            
+            fetch('/api/test/database')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        resultElement.textContent = `Status: Connected (${data.message})`;
+                        resultElement.classList.add('success');
+                    } else {
+                        resultElement.textContent = `Status: Error (${data.message})`;
+                        resultElement.classList.add('error');
+                    }
+                })
+                .catch(error => {
+                    resultElement.textContent = `Status: Error (${error.message})`;
+                    resultElement.classList.add('error');
+                });
+        });
+    </script>
+</body>
+</html> 
