@@ -80,6 +80,22 @@ Our business was separated into 3 services:
     \item Group chat service - This service was responsible for handling the group chats. It was responsible for managing the data on group chats in the database and ensuring that the group chats were stored and retrieved correctly.
 \end{itemize}
 
+\section{Technical Implementation}
+The backend of the messaging application leverages three Python-Flask microservices with MySQL databases:
+
+\begin{itemize}
+    \item \textbf{User Service}: Manages a \texttt{users} table with user credentials and profile information. Handles authentication, registration, and user profile queries.
+    
+    \item \textbf{Message Service}: Maintains two tables: \texttt{messages} for direct messaging and \texttt{group\_messages} for group communications. Stores message content, sender/recipient IDs, and timestamps.
+    
+    \item \textbf{Group Chat Service}: Controls the \texttt{groups} table containing group metadata, including name, creator, and a JSON array of member IDs.
+\end{itemize}
+
+\noindent Inter-service communication occurs via direct API calls. An example of this is that when displaying conversations, the Message Service queries its database for message content but calls the User Service to retrieve usernames. Similarly, the Group Chat Service validates members by checking with the User Service.
+The application is deployed using Kubernetes for orchestration, enabling efficient load handling and service scaling.
+A future enhancement would be implementing message queues between services to improve comunication between them, when at a larger scale such that each service can have multiple instances.
+Please see the link to the repo for the code.
+
 \section{What I Delivered}
 I managed to implement all the services and endpoints to match the use cases.
 I realized that I had to implement extra endpoints to deal with handling the cookies and sessions when in the web app.
