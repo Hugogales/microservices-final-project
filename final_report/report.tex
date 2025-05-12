@@ -92,7 +92,7 @@ The backend of the messaging application leverages three Python-Flask microservi
 \end{itemize}
 
 \noindent Inter-service communication occurs via direct API calls. An example of this is that when displaying conversations, the Message Service queries its database for message content but calls the User Service to retrieve usernames. Similarly, the Group Chat Service validates members by checking with the User Service.
-The application is deployed using Kubernetes for orchestration, enabling efficient load handling and service scaling.
+The application is deployed using Kubernetes and docker containers, this allowed me to deploy the application in a single node cluster.
 A future enhancement would be implementing message queues between services to improve comunication between them, when at a larger scale such that each service can have multiple instances.
 Please see the link to the repo for the code.
 
