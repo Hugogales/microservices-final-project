@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.26)  12 MAY 2025 14:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.26)  12 MAY 2025 14:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -391,8 +391,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count322
 \l__pdf_internal_box=\box61
-)
-No file report.aux.
+) (report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
@@ -413,7 +412,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
 LaTeX Font Info:    ... okay on input line 48.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
 LaTeX Font Info:    ... okay on input line 48.
-(C:\Users\garrido-lestacheh\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+ (C:\Users\garrido-lestacheh\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count323
 \scratchdimen=\dimen193
@@ -440,6 +439,7 @@ Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count329
 Package hyperref Info: Link coloring OFF on input line 48.
+ (report.out) (report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
@@ -483,99 +483,52 @@ Package hyperref Info: Link coloring OFF on input line 48.
 [1
 
 {C:/Users/garrido-lestacheh/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-
-LaTeX Warning: File `images/1.png' not found on input line 96.
-
-
-c:/Users/garrido-lestacheh/OneDrive - Milwaukee School of Engineering/School/3rd/Sprin/Cloud & Microservices/Labs/Final_Project/final_report/report.tex:96: Package pdftex.def Error: File `images/1.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.96 ...degraphics[width=\textwidth]{images/1.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `images/2.png' not found on input line 101.
-
-
-c:/Users/garrido-lestacheh/OneDrive - Milwaukee School of Engineering/School/3rd/Sprin/Cloud & Microservices/Labs/Final_Project/final_report/report.tex:101: Package pdftex.def Error: File `images/2.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.101 ...egraphics[width=\textwidth]{images/2.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `images/3.png' not found on input line 106.
-
-
-c:/Users/garrido-lestacheh/OneDrive - Milwaukee School of Engineering/School/3rd/Sprin/Cloud & Microservices/Labs/Final_Project/final_report/report.tex:106: Package pdftex.def Error: File `images/3.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 ...egraphics[width=\textwidth]{images/3.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `images/5.png' not found on input line 111.
-
-
-c:/Users/garrido-lestacheh/OneDrive - Milwaukee School of Engineering/School/3rd/Sprin/Cloud & Microservices/Labs/Final_Project/final_report/report.tex:111: Package pdftex.def Error: File `images/5.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.111 ...egraphics[width=\textwidth]{images/5.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+<images/1.png, id=41, 640.64343pt x 511.15968pt>
+File: images/1.png Graphic file (type png)
+<use images/1.png>
+Package pdftex.def Info: images/1.png  used on input line 96.
+(pdftex.def)             Requested size: 224.39664pt x 179.04115pt.
+<images/2.png, id=43, 1444.64719pt x 795.72281pt>
+File: images/2.png Graphic file (type png)
+<use images/2.png>
+Package pdftex.def Info: images/2.png  used on input line 101.
+(pdftex.def)             Requested size: 224.39664pt x 123.59073pt.
+<images/3.png, id=44, 1444.64719pt x 708.39656pt>
+File: images/3.png Graphic file (type png)
+<use images/3.png>
+Package pdftex.def Info: images/3.png  used on input line 106.
+(pdftex.def)             Requested size: 224.39664pt x 110.02731pt.
+<images/4.png, id=45, 1442.38875pt x 697.10437pt>
+File: images/4.png Graphic file (type png)
+<use images/4.png>
+Package pdftex.def Info: images/4.png  used on input line 111.
+(pdftex.def)             Requested size: 224.39664pt x 108.44362pt.
 
 
 [2]
 
-[3]
+[3 <./images/1.png> <./images/2.png> <./images/3.png> <./images/4.png>]
 
 [4] (report.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
-
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  A939F8068D6013EED29C27ADB8C6E5BD;854.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: 147C5CF404E45AF432DAD0E35600CC03;963.
  ) 
 Here is how much of TeX's memory you used:
- 14565 strings out of 473899
- 236924 string characters out of 5720836
+ 14484 strings out of 473899
+ 235310 string characters out of 5720836
  787957 words of memory out of 5000000
- 37258 multiletter control sequences out of 15000+600000
- 561442 words of font info for 48 fonts, out of 8000000 for 9000
+ 37171 multiletter control sequences out of 15000+600000
+ 561273 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,80p,446b,629s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\garrido-lestacheh\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (4 pages, 77251 bytes).
+ 75i,8n,80p,446b,629s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\garrido-lestacheh\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/garrido-lestacheh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on report.pdf (4 pages, 328029 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 93 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
